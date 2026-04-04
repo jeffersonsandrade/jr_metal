@@ -1,0 +1,2033 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Soluções em caldeiraria, reservatórios metálicos e montagens industriais com qualidade e entrega no prazo. Solicite orçamento.">
+
+<meta property="og:title" content="JR Metal | Soluções Industriais">
+<meta property="og:description" content="Projetos industriais com qualidade e precisão. Solicite orçamento.">
+<meta property="og:type" content="website">
+  <title>JR Metal | Soluções Industriais</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+
+  <script type="text/javascript" src="main.js?attr=..."></script>
+  <script src="gsap"></script>
+<script src="ScrollTrigger"></script>
+  
+  <style>
+    :root{
+      --bg: #0a1016;
+      --bg-soft: #0f1720;
+      --bg-card: rgba(255,255,255,0.04);
+      --bg-card-2: rgba(255,255,255,0.06);
+      --text: #e9eef5;
+      --muted: #97a6b5;
+      --title: #ffffff;
+      --primary: #2563eb;
+      --primary-2: #60a5fa;
+      --line: rgba(255,255,255,0.10);
+      --shadow: 0 18px 55px rgba(0,0,0,0.30);
+      --shadow-soft: 0 10px 28px rgba(0,0,0,0.18);
+      --hero-overlay: linear-gradient(90deg, rgba(6,10,15,0.92) 0%, rgba(6,10,15,0.72) 44%, rgba(6,10,15,0.28) 100%);
+      --wa: #25D366;
+      --radius: 22px;
+      --container: 1200px;
+    }
+
+    body.light-mode{
+      --bg: #f3f6f9;
+      --bg-soft: #ffffff;
+      --bg-card: rgba(15,23,32,0.04);
+      --bg-card-2: rgba(15,23,32,0.06);
+      --text: #223243;
+      --muted: #5e7082;
+      --title: #0f1720;
+      --primary: #1d4ed8;
+      --primary-2: #93c5fd;
+      --line: rgba(15,23,32,0.10);
+      --shadow: 0 18px 48px rgba(15,23,32,0.12);
+      --shadow-soft: 0 8px 22px rgba(15,23,32,0.08);
+      --hero-overlay: linear-gradient(90deg, rgba(243,246,249,0.96) 0%, rgba(243,246,249,0.78) 44%, rgba(243,246,249,0.22) 100%);
+    }
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      font-family:"Inter", sans-serif;
+      background:
+        radial-gradient(circle at top right, rgba(37,99,235,0.14), transparent 22%),
+        radial-gradient(circle at bottom left, rgba(59,130,246,0.10), transparent 28%),
+        var(--bg);
+      color:var(--text);
+      transition: background .35s ease, color .35s ease;
+      overflow-x:hidden;
+    }
+
+    img{
+      display:block;
+      max-width:100%;
+    }
+
+    a{
+      text-decoration:none;
+      color:inherit;
+    }
+
+    ul{
+      list-style:none;
+    }
+
+    .container{
+      width:min(100% - 2rem, var(--container));
+      margin-inline:auto;
+    }
+
+    .section{
+      padding:96px 0;
+      position:relative;
+    }
+
+    .section-header{
+      max-width:780px;
+      margin:0 auto 54px;
+      text-align:center;
+    }
+
+    .section-header span{
+      display:inline-block;
+      color:var(--primary);
+      font-size:.82rem;
+      font-weight:800;
+      text-transform:uppercase;
+      letter-spacing:.12em;
+      margin-bottom:14px;
+    }
+
+    .section-header h2{
+      font-size:clamp(2rem, 4vw, 3.2rem);
+      line-height:1.08;
+      color:var(--title);
+      margin-bottom:14px;
+    }
+
+    .section-header p {
+      color:var(--muted);
+      line-height:1.75;
+    }
+
+    .chip{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:10px 16px;
+      border-radius:999px;
+      background:rgba(37,99,235,0.12);
+      border:1px solid rgba(37,99,235,0.22);
+      color:var(--primary-2);
+      font-size:.92rem;
+      font-weight:700;
+      backdrop-filter:blur(10px);
+    }
+
+    .btn{
+      min-height:54px;
+      padding:0 24px;
+      border-radius:999px;
+      border:1px solid transparent;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      cursor:pointer;
+      font-family:inherit;
+      font-weight:800;
+      transition:.28s ease;
+    }
+
+    .btn-primary{
+      color:#fff;
+      background:linear-gradient(135deg, #2e6cdd, #2e6cdd);
+      box-shadow:0 14px 30px rgba(37,99,235,0.25);
+    }
+
+    .btn-primary:hover{
+      transform:translateY(-2px);
+      filter:brightness(1.04);
+    }
+
+    .btn-outline{
+      color:var(--title);
+      background:transparent;
+      border-color:var(--line);
+    }
+
+    .btn-outline:hover{
+      background:var(--bg-card);
+      transform:translateY(-2px);
+    }
+
+    .card{
+      background:linear-gradient(180deg, var(--bg-card-2), var(--bg-card));
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+    }
+
+    /* NAVBAR FIXA COM BLUR E SEM DARK/LIGHT */
+    .navbar{
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      background: rgba(6, 12, 20, 5);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.18);
+      transition: box-shadow .3s ease, border-color .3s ease, background .3s ease;
+    }
+
+    .navbar::before{
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        180deg,
+        rgba(255,255,255,0.06) 0%,
+        rgba(255,255,255,0.02) 100%
+      );
+      pointer-events: none;
+    }
+
+    .navbar.scrolled{
+      background: rgba(8, 12, 18, 0.82);
+      border-bottom-color: rgba(96,165,250,0.22);
+      box-shadow: 0 14px 34px rgba(0,0,0,0.24);
+    }
+
+    .navbar .navbar-inner{
+      position: relative;
+      z-index: 1;
+    }
+
+    .navbar-inner{
+      min-height:82px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+    }
+
+    .logo{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      font-weight:900;
+      color:#ffffff;
+      white-space:nowrap;
+      width: 220px;
+    }
+
+    
+    .brand-logo{
+      width: 210px;
+      max-width: 100%;
+      height: auto;
+      display:block;
+      filter: drop-shadow(0 10px 26px rgba(37,99,235,0.22));
+    }
+
+    .footer-logo .brand-logo{
+      width: 170px;
+      filter: drop-shadow(0 8px 20px rgba(37,99,235,0.18));
+    }
+
+    .logo-mark{
+      width:48px;
+      height:48px;
+      border-radius:16px;
+      display:grid;
+      place-items:center;
+      background:linear-gradient(135deg, var(--primary), var(--primary-2));
+      color:#fff;
+      box-shadow:0 14px 26px rgba(37,99,235,0.25);
+    }
+
+    .nav-menu{
+      display:flex;
+      align-items:center;
+      gap:24px;
+    }
+
+    .nav-menu a{
+      color: rgba(255,255,255,0.78);
+      font-weight:700;
+      transition:.28s ease;
+      position:relative;
+      padding:8px 0;
+    }
+
+    .nav-menu a::after{
+      content:"";
+      position:absolute;
+      left:0;
+      bottom:0;
+      width:0;
+      height:2px;
+      border-radius:999px;
+      background:linear-gradient(90deg, var(--primary), var(--primary-2));
+      transition:width .28s ease;
+    }
+
+    .nav-menu a:hover{
+      color:#ffffff;
+      transform:translateY(-1px);
+    }
+
+    .nav-menu a:hover::after{
+      width:100%;
+    }
+
+    .navbar.scrolled .nav-menu a:hover{
+      color: var(--primary-2);
+    }
+
+    .nav-actions{
+      display:flex;
+      align-items:center;
+      gap:12px;
+    }
+
+    .theme-toggle,
+    .menu-toggle{
+      width:48px;
+      height:48px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,0.10);
+      background: rgba(255,255,255,0.05);
+      color:#ffffff;
+      display:grid;
+      place-items:center;
+      cursor:pointer;
+      transition:.28s ease;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    .theme-toggle:hover,
+    .menu-toggle:hover{
+      background: rgba(255,255,255,0.10);
+      transform:translateY(-2px) scale(1.03);
+      border-color:rgba(96,165,250,0.30);
+      box-shadow:0 12px 26px rgba(37,99,235,0.16);
+    }
+
+    .menu-toggle{
+      display:none;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .menu-toggle::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(135deg, rgba(249,115,22,0.10), transparent);
+      opacity:0;
+      transition:opacity .28s ease;
+    }
+
+    .menu-toggle:hover::before{
+      opacity:1;
+    }
+
+    .menu-toggle span{
+      position:absolute;
+      width:22px;
+      height:2px;
+      background:#ffffff;
+      border-radius:99px;
+      transition:.3s ease;
+      z-index:1;
+    }
+
+    .menu-toggle span:nth-child(1){ transform:translateY(-6px); }
+    .menu-toggle span:nth-child(2){ transform:translateY(0); }
+    .menu-toggle span:nth-child(3){ transform:translateY(6px); }
+
+    .menu-toggle:hover span{
+      background:var(--primary-2);
+    }
+
+    .menu-toggle.active span:nth-child(1){ transform:rotate(45deg); }
+    .menu-toggle.active span:nth-child(2){ opacity:0; }
+    .menu-toggle.active span:nth-child(3){ transform:rotate(-45deg); }
+
+    .hero{
+      min-height:calc(100vh - 82px);
+      display:flex;
+      align-items:center;
+      position:relative;
+      overflow:hidden;
+      background:
+        var(--hero-overlay),
+        url("/assets/background_hero.jpg") center/cover no-repeat;
+    }
+
+    .hero::before{
+      content:"";
+      position:absolute;
+      width:540px;
+      height:540px;
+      right:-120px;
+      top:-120px;
+      border-radius:50%;
+      background: radial-gradient(circle, rgba(37,99,235,0.34) 0%, rgba(37,99,235,0.14) 34%, rgba(37,99,235,0) 72%);
+      filter: blur(18px);
+      pointer-events:none;
+      z-index:0;
+    }
+
+    .hero::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(180deg, rgba(0,0,0,0.08) 0%, rgba(0,0,0,0.28) 100%);
+      pointer-events:none;
+    }
+
+    body.light-mode .hero::after{
+      background:linear-gradient(180deg, rgba(255,255,255,0.02) 0%, rgba(255,255,255,0.16) 100%);
+    }
+
+    .hero .container{
+      position:relative;
+      z-index:2;
+    }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1.05fr .95fr;
+      gap:42px;
+      align-items:center;
+    }
+
+    .hero-content{
+      max-width:700px;
+    }
+
+    .hero h1{
+      font-size:clamp(2.9rem, 6vw, 6rem);
+      line-height:0.98;
+      font-weight:900;
+      letter-spacing:-0.04em;
+      color:#fff;
+      margin:18px 0 20px;
+      text-shadow:0 8px 30px rgba(0,0,0,0.30);
+      max-width: 11ch;
+    }
+
+    body.light-mode .hero h1{
+      color:#101820;
+      text-shadow:none;
+    }
+
+    .hero p{
+      font-size:1.12rem;
+      line-height:1.85;
+      color:rgba(255,255,255,0.86);
+      max-width:650px;
+      margin-bottom:30px;
+    }
+
+    body.light-mode .hero p{
+      color:#314658;
+    }
+
+    .hero-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:14px;
+      margin-bottom:30px;
+    }
+
+    .hero-benefits{
+      display:grid;
+      grid-template-columns:repeat(3, 1fr);
+      gap:14px;
+    }
+
+    .hero-benefit{
+      padding:18px;
+      border-radius:18px;
+      background:rgba(255,255,255,0.08);
+      border:1px solid rgba(255,255,255,0.12);
+      backdrop-filter:blur(12px);
+      box-shadow:var(--shadow-soft);
+    }
+
+    body.light-mode .hero-benefit{
+      background:rgba(255,255,255,0.56);
+      border-color:rgba(15,23,32,0.08);
+    }
+
+    .hero-benefit i{
+      color:var(--primary);
+      font-size:1.15rem;
+      margin-bottom:10px;
+    }
+
+    .hero-benefit strong{
+      display:block;
+      color:#fff;
+      margin-bottom:6px;
+      font-size:1.04rem;
+    }
+
+    body.light-mode .hero-benefit strong{
+      color:#101820;
+    }
+
+    .hero-benefit span{
+      color:rgba(255,255,255,0.78);
+      font-size:.93rem;
+      line-height:1.65;
+    }
+
+    body.light-mode .hero-benefit span{
+      color:#496275;
+    }
+
+    .hero-panel{
+      position:relative;
+    }
+
+    .hero-card{
+      overflow:hidden;
+      border-radius:30px;
+      border:1px solid rgba(255,255,255,0.12);
+      box-shadow:0 30px 70px rgba(0,0,0,0.40), 0 0 0 1px rgba(96,165,250,0.12) inset;
+      background:rgba(255,255,255,0.05);
+      backdrop-filter:blur(10px);
+      position:relative;
+    }
+
+    .hero-card::after{
+      content:"";
+      position:absolute;
+      inset:auto -10% -20% auto;
+      width:260px;
+      height:260px;
+      background: radial-gradient(circle, rgba(59,130,246,0.42) 0%, rgba(59,130,246,0.18) 35%, rgba(59,130,246,0) 72%);
+      filter: blur(16px);
+      pointer-events:none;
+    }
+
+    .hero-card img{
+      width:100%;
+      height:560px;
+      object-fit:cover;
+    }
+
+    .hero-floating{
+      position:absolute;
+      right:-18px;
+      bottom:24px;
+      max-width:320px;
+      padding:22px;
+      border-radius:22px;
+      background:linear-gradient(180deg, rgba(7,15,30,0.96), rgba(8,12,18,0.92));
+      border:1px solid rgba(96,165,250,0.22);
+      box-shadow:0 24px 50px rgba(0,0,0,0.34), 0 0 30px rgba(37,99,235,0.14);
+    }
+
+    body.light-mode .hero-floating{
+      background:rgba(255,255,255,0.94);
+      border-color:rgba(15,23,32,0.08);
+    }
+
+    .hero-floating small{
+      display:inline-block;
+      color:var(--primary);
+      font-weight:800;
+      text-transform:uppercase;
+      letter-spacing:.06em;
+      margin-bottom:8px;
+    }
+
+    .hero-floating strong{
+      display:block;
+      color:#fff;
+      font-size:1.06rem;
+      margin-bottom:8px;
+    }
+
+    body.light-mode .hero-floating strong{
+      color:#101820;
+    }
+
+    .hero-floating p{
+      margin:0;
+      color:var(--muted);
+      font-size:.94rem;
+      line-height:1.7;
+    }
+
+    .services-grid{
+      display:grid;
+      grid-template-columns:repeat(3, 1fr);
+      gap:24px;
+    }
+
+    .service-card{
+      padding:24px;
+      overflow:hidden;
+      position:relative;
+      transition:.32s ease;
+    }
+
+    .service-card::before{
+      content:"";
+      position:absolute;
+      inset:auto 0 0 0;
+      height:3px;
+      background:linear-gradient(90deg, var(--primary), var(--primary-2));
+      transform:scaleX(0);
+      transform-origin:left;
+      transition:.35s ease;
+    }
+
+    .service-card:hover{
+      transform:translateY(-8px);
+      border-color:rgba(96,165,250,0.28);
+    }
+
+    .service-card:hover::before{
+      transform:scaleX(1);
+    }
+
+    .service-image{
+      width:100%;
+      height:300px;
+      object-fit:cover;
+      border-radius:18px;
+      margin-bottom:18px;
+    }
+
+    .service-top{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      margin-bottom:14px;
+    }
+
+    .service-icon{
+      width:56px;
+      height:56px;
+      border-radius:16px;
+      display:grid;
+      place-items:center;
+      background:rgba(37,99,235,0.12);
+      color:var(--primary);
+      font-size:1.3rem;
+      flex-shrink:0;
+    }
+
+    .service-card h3{
+      color:var(--title);
+      font-size:1.25rem;
+      line-height:1.2;
+    }
+
+    .service-card p{
+      color:var(--muted);
+      line-height:1.75;
+      margin-bottom:16px;
+    }
+
+    .service-link{
+      color:var(--primary);
+      font-weight:800;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+    }
+
+    .about-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:34px;
+      align-items:center;
+    }
+
+    .about-image img{
+      width:100%;
+      min-height:480px;
+      height:100%;
+      object-fit:cover;
+      border-radius:28px;
+      box-shadow:var(--shadow);
+      border:1px solid var(--line);
+    }
+
+    .about-content h2{
+      font-size:clamp(2rem, 4vw, 3rem);
+      line-height:1.08;
+      color:var(--title);
+      margin:18px 0 16px;
+    }
+
+    .about-content p{
+      color:var(--muted);
+      line-height:1.8;
+      margin-bottom:16px;
+    }
+
+    .about-list{
+      display:grid;
+      gap:14px;
+      margin-top:24px;
+    }
+
+    .about-list li{
+      display:flex;
+      gap:12px;
+      align-items:flex-start;
+      padding:16px;
+      border-radius:18px;
+      background:var(--bg-card);
+      border:1px solid var(--line);
+      color:var(--text);
+    }
+
+    .about-list i{
+      color:var(--primary);
+      margin-top:3px;
+      flex-shrink:0;
+    }
+
+    .stats-grid{
+      display:grid;
+      grid-template-columns:repeat(4, 1fr);
+      gap:22px;
+    }
+
+    .stat-card{
+      padding:30px 22px;
+      text-align:center;
+    }
+
+    .stat-icon{
+      width:62px;
+      height:62px;
+      margin:0 auto 16px;
+      border-radius:18px;
+      display:grid;
+      place-items:center;
+      background:rgba(37,99,235,0.12);
+      color:var(--primary);
+      font-size:1.35rem;
+    }
+
+    .stat-number{
+      font-size:clamp(2rem, 4vw, 3rem);
+      line-height:1;
+      font-weight:900;
+      color:var(--primary);
+      margin-bottom:10px;
+    }
+
+    .stat-card h3{
+      color:var(--title);
+      font-size:1rem;
+      margin-bottom:8px;
+    }
+
+    .stat-card p{
+      color:var(--muted);
+      font-size:.95rem;
+      line-height:1.65;
+    }
+
+    .gallery-filters{
+      display:flex;
+      justify-content:center;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-bottom:32px;
+    }
+
+    .filter-btn{
+      min-height:48px;
+      padding:0 18px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background:var(--bg-card);
+      color:var(--title);
+      font-family:inherit;
+      font-weight:700;
+      font-size:.95rem;
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      cursor:pointer;
+      transition:.28s ease;
+    }
+
+    .filter-btn:hover{
+      transform:translateY(-2px);
+      background:var(--bg-card-2);
+      border-color:rgba(96,165,250,0.30);
+    }
+
+    .filter-btn.active{
+      background:linear-gradient(135deg, var(--primary), var(--primary-2));
+      color:#fff;
+      border-color:transparent;
+      box-shadow:0 12px 26px rgba(37,99,235,0.24);
+    }
+
+    .gallery-grid{
+      display:grid;
+      grid-template-columns:repeat(3, 1fr);
+      gap:22px;
+    }
+
+    .gallery-card{
+      overflow:hidden;
+      border-radius:24px;
+      transition:.3s ease;
+    }
+
+    .gallery-card:hover{
+      transform:translateY(-8px);
+    }
+
+    .gallery-card.hide{
+      display:none;
+    }
+
+    .gallery-card img{
+      width:100%;
+      height:350px;
+      object-fit:cover;
+      transition:transform .5s ease;
+    }
+
+    .gallery-card:hover img{
+      transform:scale(1.06);
+    }
+
+    .gallery-content{
+      padding:22px;
+    }
+
+    .gallery-content h3{
+      color:var(--title);
+      font-size:1.1rem;
+      margin-bottom:8px;
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+
+    .gallery-content h3 i{
+      color:var(--primary);
+      font-size:1rem;
+    }
+
+    .gallery-content p{
+      color:var(--muted);
+      line-height:1.7;
+      font-size:.95rem;
+    }
+
+    .differentials-grid{
+      display:grid;
+      grid-template-columns:repeat(4, 1fr);
+      gap:20px;
+    }
+
+    .diff-card{
+      text-align:center;
+      padding:28px 20px;
+      transition:.3s ease;
+    }
+
+    .diff-card:hover{
+      transform:translateY(-6px);
+    }
+
+    .diff-icon{
+      width:64px;
+      height:64px;
+      margin:0 auto 16px;
+      border-radius:18px;
+      display:grid;
+      place-items:center;
+      background:rgba(37,99,235,0.12);
+      color:var(--primary);
+      font-size:1.4rem;
+    }
+
+    .diff-card h3{
+      color:var(--title);
+      font-size:1.08rem;
+      margin-bottom:10px;
+    }
+
+    .diff-card p{
+      color:var(--muted);
+      font-size:.95rem;
+      line-height:1.7;
+    }
+
+    .process-grid{
+      display:grid;
+      grid-template-columns:repeat(4, 1fr);
+      gap:22px;
+    }
+
+    .process-step{
+      padding:28px 22px;
+      position:relative;
+    }
+
+    .step-number{
+      width:54px;
+      height:54px;
+      border-radius:50%;
+      display:grid;
+      place-items:center;
+      color:#fff;
+      font-weight:900;
+      background:linear-gradient(135deg, var(--primary), var(--primary-2));
+      box-shadow:0 12px 28px rgba(37,99,235,0.30);
+      margin-bottom:16px;
+    }
+
+    .process-step h3{
+      color:var(--title);
+      margin-bottom:10px;
+      font-size:1.08rem;
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+
+    .process-step h3 i{
+      color:var(--primary);
+      font-size:.95rem;
+    }
+
+    .process-step p{
+      color:var(--muted);
+      font-size:.95rem;
+      line-height:1.7;
+    }
+
+    .contact-grid{
+      display:grid;
+      grid-template-columns:.95fr 1.05fr;
+      gap:26px;
+    }
+
+    .contact-card,
+    .contact-form{
+      padding:28px;
+    }
+
+    .contact-card h3,
+    .contact-form h3{
+      color:var(--title);
+      font-size:1.35rem;
+      margin-bottom:18px;
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+
+    .contact-card h3 i,
+    .contact-form h3 i{
+      color:var(--primary);
+    }
+
+    .contact-card p{
+      color:var(--muted);
+      line-height:1.75;
+      margin-bottom:20px;
+    }
+
+    .contact-info{
+      display:grid;
+      gap:14px;
+    }
+
+    .contact-info li{
+      padding:16px;
+      border-radius:16px;
+      border:1px solid var(--line);
+      background:var(--bg-card);
+      color:var(--muted);
+      display:flex;
+      gap:12px;
+      align-items:flex-start;
+    }
+
+    .contact-info i{
+      color:var(--primary);
+      margin-top:4px;
+      flex-shrink:0;
+    }
+
+
+    select#servico {
+    
+    color: var(--muted);
+    }
+
+    .contact-info strong{
+      display:block;
+      color:var(--title);
+      margin-bottom:4px;
+    }
+
+    .form-grid{
+      display:grid;
+      gap:14px;
+    }
+
+    .form-row{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:14px;
+    }
+
+    .field{
+      display:grid;
+      gap:8px;
+    }
+
+    .field label{
+      color:var(--title);
+      font-size:.94rem;
+      font-weight:700;
+    }
+
+    .field input,
+    .field textarea,
+    .field select{
+      width:100%;
+      padding:14px 16px;
+      border-radius:14px;
+      border:1px solid var(--line);
+      background:var(--bg-card);
+      color:var(--text);
+      font-family:inherit;
+      outline:none;
+      transition:.22s ease;
+      font-size: unset;
+    }
+
+    .field input:focus,
+    .field textarea:focus,
+    .field select:focus{
+      border-color:rgba(96,165,250,0.45);
+      box-shadow:0 0 0 4px rgba(37,99,235,0.10);
+    }
+
+    .field textarea{
+      resize:vertical;
+      min-height:150px;
+    }
+
+    .form-feedback{
+      display:none;
+      padding:14px 16px;
+      border-radius:14px;
+      background:rgba(37, 211, 102, 0.12);
+      border:1px solid rgba(37, 211, 102, 0.28);
+      color:#bdf7d1;
+      font-weight:700;
+      font-size:.95rem;
+    }
+
+    body.light-mode .form-feedback{
+      color:#167a3e;
+      background:rgba(37, 211, 102, 0.10);
+      border-color:rgba(37, 211, 102, 0.22);
+    }
+
+    .form-feedback.show{
+      display:block;
+    }
+
+    .footer{
+      padding:30px 0;
+      border-top:1px solid var(--line);
+      background:rgba(0,0,0,0.08);
+    }
+
+    body.light-mode .footer{
+      background:rgba(15,23,32,0.03);
+    }
+
+    .footer-inner{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      gap:12px;
+      text-align:center;
+    }
+
+    .footer-logo{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      color:var(--title);
+      font-weight:900;
+      width: 180px;
+    }
+
+    .footer-logo .logo-mark{
+      width:42px;
+      height:42px;
+      border-radius:14px;
+      font-size:.95rem;
+      
+    }
+
+    .footer p{
+      color:var(--muted);
+      font-size:.94rem;
+    }
+
+    .whatsapp-float{
+      position:fixed;
+      right:22px;
+      bottom:22px;
+      width:64px;
+      height:64px;
+      border-radius:50%;
+      display:grid;
+      place-items:center;
+      background:var(--wa);
+      color:#fff;
+      box-shadow:0 14px 34px rgba(37,211,102,0.35);
+      z-index:1200;
+      font-size:1.85rem;
+      animation:pulseWhats 1.8s infinite;
+    }
+
+    @keyframes pulseWhats{
+      0%{
+        box-shadow:0 0 0 0 rgba(37,211,102,0.55), 0 14px 34px rgba(37,211,102,0.35);
+        transform:scale(1);
+      }
+      70%{
+        box-shadow:0 0 0 16px rgba(37,211,102,0), 0 14px 34px rgba(37,211,102,0.28);
+        transform:scale(1.04);
+      }
+      100%{
+        box-shadow:0 0 0 0 rgba(37,211,102,0), 0 14px 34px rgba(37,211,102,0.35);
+        transform:scale(1);
+      }
+    }
+
+    @media (max-width:1080px){
+      .hero-grid,
+      .about-grid,
+      .contact-grid{
+        grid-template-columns:1fr;
+      }
+
+      .services-grid,
+      .gallery-grid{
+        grid-template-columns:repeat(2, 1fr);
+      }
+
+      .differentials-grid,
+      .process-grid,
+      .stats-grid{
+        grid-template-columns:repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width:860px){
+      .nav-menu{
+        position:absolute;
+        top:83px;
+        left:0;
+        width:100%;
+        padding:24px;
+        background: rgba(8, 12, 18, 0.94);
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+        border-bottom:1px solid rgba(255,255,255,0.08);
+        flex-direction:column;
+        align-items:flex-start;
+        gap:18px;
+        transform:translateY(-120%);
+        opacity:0;
+        pointer-events:none;
+        transition:.3s ease;
+      }
+
+      .nav-menu.active{
+        transform:translateY(0);
+        opacity:1;
+        pointer-events:auto;
+      }
+
+      .nav-cta{
+        display:none;
+      }
+
+      .menu-toggle{
+        display:grid;
+      }
+
+      .hero{
+        min-height:auto;
+        padding:70px 0;
+      }
+
+      .hero-benefits,
+      .services-grid,
+      .gallery-grid,
+      .differentials-grid,
+      .process-grid,
+      .stats-grid,
+      .form-row{
+        grid-template-columns:1fr;
+      }
+
+      .hero-card img{
+        height:380px;
+      }
+
+      .hero-floating{
+        position:static;
+        margin-top:16px;
+        max-width:100%;
+      }
+    }
+
+    @media (max-width:560px){
+      .navbar-inner{
+        min-height:76px;
+      }
+
+      .logo-mark{
+        width:44px;
+        height:44px;
+      }
+
+      .brand-logo{
+        width:160px;
+      }
+
+      .footer-logo .brand-logo{
+        width:145px;
+      }
+
+      .hero h1{
+        font-size:2.15rem;
+      }
+
+      .btn{
+        width:100%;
+      }
+
+      .hero-actions{
+        flex-direction:column;
+      }
+
+      .service-card,
+      .contact-card,
+      .contact-form,
+      .gallery-content,
+      .stat-card{
+        padding:22px;
+      }
+
+      .whatsapp-float{
+        width:58px;
+        height:58px;
+        right:16px;
+        bottom:16px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="navbar" id="navbar">
+    <div class="container navbar-inner">
+      <a href="#inicio" class="logo">
+       <img src="assets/logo_02.png" alt="JR Metal" class="brand-logo"> </a>
+      
+
+      <nav class="nav-menu" id="navMenu">
+        <a href="#inicio">Início</a>
+        <a href="#servicos">Serviços</a>
+        <a href="#empresa">Empresa</a>
+        <a href="#numeros">Resultados</a>
+        <a href="#projetos">Projetos</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Alternar tema">
+          <i class="fa-solid fa-moon"></i>
+        </button>
+
+        <a href="#contato" class="btn btn-primary nav-cta">
+          <i class="fa-solid fa-paper-plane"></i>
+          Solicitar orçamento
+        </a>
+
+        <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero" id="inicio">
+    <div class="container hero-grid">
+      <div class="hero-content">
+        <div class="chip reveal-up">
+          <i class="fa-solid fa-industry"></i>
+          Engenharia metálica com padrão industrial pesado
+        </div>
+
+        <h1 class="reveal-up">
+          Reservatórios Metálicos, Caldeiraria, Manutenção e Montagens Industriais
+        </h1>
+
+        <p class="reveal-up">
+          A JR Metal executa projetos metálicos de alta exigência com foco em robustez estrutural, performance operacional e acabamento técnico. Soluções sob medida para empresas que precisam de presença, confiabilidade e entrega profissional.
+        </p>
+
+        <div class="hero-actions reveal-up">
+          <a href="#contato" class="btn btn-primary">
+            <i class="fa-solid fa-file-signature"></i>
+            Solicitar orçamento
+          </a>
+          <a href="#projetos" class="btn btn-outline">
+            <i class="fa-solid fa-images"></i>
+            Ver projetos
+          </a>
+        </div>
+
+        
+      </div>
+
+      <div class="hero-panel reveal-right">
+        <div class="hero-card">
+          <img src="assets/tanques_industriais.jpg" alt="Estrutura metálica industrial">
+        </div>
+
+        
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="servicos">
+    <div class="container">
+      <div class="section-header">
+        <span>Nossos serviços</span>
+        <h2>Soluções industriais para quem precisa de estrutura e confiabilidade</h2>
+        <p>
+          Conheça os principais serviços da JR Metal e encontre a solução ideal para ampliar, manter ou modernizar sua operação.
+        </p>
+      </div>
+
+      <div class="services-grid">
+        <article class="service-card card reveal-up">
+          <img class="service-image" src="assets/reservatorios/Reservatório_05.jpg" alt="Reservatórios metálicos">
+          <div class="service-top">
+            <div class="service-icon">
+              <i class="fa-solid fa-oil-can"></i>
+            </div>
+            <h3>Reservatórios Metálicos</h3>
+          </div>
+          <p>Fabricação e montagem de reservatórios metálicos com foco em resistência estrutural, durabilidade e adequação ao projeto.</p>
+          <a href="#contato" class="service-link">
+            Solicitar proposta <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </article>
+
+        <article class="service-card card reveal-up">
+          <img class="service-image" src="assets/caldeiraria/Caldeiraria_07.jpg" alt="Serviços de caldeiraria">
+          <div class="service-top">
+            <div class="service-icon">
+              <i class="fa-solid fa-gears"></i>
+            </div>
+            <h3>Caldeiraria</h3>
+          </div>
+          <p>Peças, estruturas e conjuntos metálicos produzidos sob medida para atender demandas industriais com precisão e acabamento profissional.</p>
+          <a href="#contato" class="service-link">
+            Quero um orçamento <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </article>
+
+        <article class="service-card card reveal-up">
+          <img class="service-image" src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?q=80&w=1200&auto=format&fit=crop" alt="Manutenção e montagens industriais">
+          <div class="service-top">
+            <div class="service-icon">
+              <i class="fa-solid fa-screwdriver-wrench"></i>
+            </div>
+            <h3>Manutenção e Montagens Industriais</h3>
+          </div>
+          <p>Serviços para garantir desempenho, segurança operacional e continuidade da produção com mais eficiência no campo.</p>
+          <a href="#contato" class="service-link">
+            Falar com a equipe <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="empresa">
+    <div class="container about-grid">
+      <div class="about-image reveal-left">
+        <img src="assets/reservatorios/tanque_metalico.jpg" alt="Equipe e estrutura industrial">
+      </div>
+
+      <div class="about-content">
+        <div class="chip reveal-up">
+          <i class="fa-solid fa-building"></i>
+          Sobre a JR Metal
+        </div>
+
+        <h2 class="reveal-up">Uma empresa preparada para entregar soluções metálicas com padrão profissional</h2>
+
+        <p class="reveal-up">
+          A JR Metal atua no setor industrial oferecendo serviços com foco em qualidade, eficiência e acabamento técnico. Cada projeto é desenvolvido para gerar resultado prático e confiança ao cliente.
+        </p>
+
+        <p class="reveal-up">
+          Trabalhamos para atender empresas que precisam de uma parceira séria, ágil e comprometida com prazo, desempenho e valor real na entrega.
+        </p>
+
+        <ul class="about-list">
+          <li class="reveal-up">
+            <i class="fa-solid fa-circle-check"></i>
+            <span>Atendimento consultivo para entender a necessidade do projeto</span>
+          </li>
+          <li class="reveal-up">
+            <i class="fa-solid fa-circle-check"></i>
+            <span>Execução com foco em qualidade, resistência e segurança</span>
+          </li>
+          <li class="reveal-up">
+            <i class="fa-solid fa-circle-check"></i>
+            <span>Equipe preparada para demandas industriais de diferentes portes</span>
+          </li>
+          <li class="reveal-up">
+            <i class="fa-solid fa-circle-check"></i>
+            <span>Relacionamento direto para facilitar orçamento e acompanhamento</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="numeros">
+    <div class="container">
+      <div class="section-header">
+        <span>Nossos resultados</span>
+        <h2>Resultados que reforçam confiança</h2>
+        <p>Use esta seção para destacar a experiência da JR Metal e gerar mais credibilidade comercial.</p>
+      </div>
+
+      <div class="stats-grid">
+        <div class="stat-card card reveal-up">
+          <div class="stat-icon"><i class="fa-solid fa-diagram-project"></i></div>
+          <div class="stat-number" data-target="250">0</div>
+          <h3>Projetos entregues</h3>
+          <p>Estruturas e serviços executados com foco em qualidade e prazo.</p>
+        </div>
+
+        <div class="stat-card card reveal-up">
+          <div class="stat-icon"><i class="fa-solid fa-calendar-check"></i></div>
+          <div class="stat-number" data-target="15">0</div>
+          <h3>Anos de atuação</h3>
+          <p>Experiência aplicada em diferentes demandas industriais.</p>
+        </div>
+
+        <div class="stat-card card reveal-up">
+          <div class="stat-icon"><i class="fa-solid fa-handshake"></i></div>
+          <div class="stat-number" data-target="120">0</div>
+          <h3>Clientes atendidos</h3>
+          <p>Empresas que confiaram em nossos serviços e soluções metálicas.</p>
+        </div>
+
+        <div class="stat-card card reveal-up">
+          <div class="stat-icon"><i class="fa-solid fa-star"></i></div>
+          <div class="stat-number" data-target="98">0</div>
+          <h3>% de satisfação</h3>
+          <p>Indicador de confiança e percepção positiva dos nossos clientes.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="projetos">
+    <div class="container">
+      <div class="section-header">
+        <span>Projetos executados</span>
+        <h2>Galeria de trabalhos realizados</h2>
+        <p>
+          Explore alguns trabalhos e serviços executados pela JR Metal. Use os filtros para visualizar projetos por categoria.
+        </p>
+      </div>
+
+      <div class="gallery-filters reveal-up">
+        <button class="filter-btn active" data-filter="reservatorios">
+          <i class="fa-solid fa-oil-can"></i>
+          Reservatórios Metálicos
+        </button>
+
+        <button class="filter-btn" data-filter="caldeiraria">
+          <i class="fa-solid fa-gears"></i>
+          Caldeiraria
+        </button>
+
+                <button class="filter-btn" data-filter="montagens">
+          <i class="fa-solid fa-industry"></i>
+          Manutenção e Montagens Industriais
+        </button>
+      </div>
+
+      <div class="gallery-grid" id="galleryGrid">
+        <article class="gallery-card card reveal-up" data-category="reservatorios">
+          <img src="assets/reservatorios/Reservatório_02.jpg" alt="Reservatório metálico industrial">
+          <div class="gallery-content">
+            <h3><i class="fa-solid fa-oil-can"></i> Reservatório metálico vertical</h3>
+            <p>Estrutura desenvolvida para armazenamento industrial com foco em resistência e durabilidade.</p>
+          </div>
+        </article>
+
+        <article class="gallery-card card reveal-up" data-category="reservatorios">
+          <img src="assets/reservatorios/Reservatório_06.jpg" alt="Tanque metálico industrial">
+          <div class="gallery-content">
+            <h3><i class="fa-solid fa-oil-can"></i> Tanque metálico sob medida</h3>
+            <p>Projeto executado para atender demanda específica com acabamento técnico e alta resistência.</p>
+          </div>
+        </article>
+
+        <article class="gallery-card card reveal-up" data-category="reservatorios">
+          <img src="assets/reservatorios/Reservatório_03.jpg" alt="Reservatório de grande porte">
+          <div class="gallery-content">
+            <h3><i class="fa-solid fa-oil-can"></i> Reservatório de grande porte</h3>
+            <p>Solução industrial planejada para desempenho estrutural e confiabilidade operacional.</p>
+          </div>
+        </article>
+
+        
+
+        <article class="gallery-card card reveal-up" data-category="caldeiraria">
+          <img src="assets/caldeiraria/Caldeiraria_07.jpg" alt="Serviço de caldeiraria industrial">
+          <div class="gallery-content">
+            <h3><i class="fa-solid fa-gears"></i> Estrutura caldeirada</h3>
+            <p>Desenvolvimento de componentes metálicos com precisão para aplicação industrial.</p>
+          </div>
+        </article>
+
+        <article class="gallery-card card reveal-up" data-category="caldeiraria">
+          <img src="assets/caldeiraria/Caldeiraria_01.jpg" alt="Peça de caldeiraria">
+          <div class="gallery-content">
+            <h3><i class="fa-solid fa-gears"></i> Conjunto metálico técnico</h3>
+            <p>Peças e conjuntos fabricados sob medida para diferentes necessidades industriais.</p>
+          </div>
+        </article>
+
+        <article class="gallery-card card reveal-up" data-category="caldeiraria">
+          <img src="assets/caldeiraria/Caldeiraria_04.jpg" alt="Estruturas em caldeiraria">
+          <div class="gallery-content">
+            <h3><i class="fa-solid fa-gears"></i> Caldeiraria sob projeto</h3>
+            <p>Execução com foco em resistência, padronização e qualidade no acabamento.</p>
+          </div>
+        </article>
+
+        
+        <article class="gallery-card card reveal-up" data-category="montagens">
+          <img src="assets/montagens/Montagens Industriais_01.jpg" alt="Montagem industrial metálica">
+          <div class="gallery-content">
+            <h3><i class="fa-solid fa-industry"></i> Montagem de estrutura metálica</h3>
+            <p>Execução de montagem com foco em segurança, alinhamento técnico e produtividade.</p>
+          </div>
+        </article>
+
+        <article class="gallery-card card reveal-up" data-category="montagens">
+          <img src="assets/montagens/Montagens Industriais_02.jpg" alt="Montagem industrial em obra">
+          <div class="gallery-content">
+            <h3><i class="fa-solid fa-industry"></i> Montagem em ambiente industrial</h3>
+            <p>Serviço realizado em campo para integração de estruturas e equipamentos metálicos.</p>
+          </div>
+        </article>
+
+        <article class="gallery-card card reveal-up" data-category="montagens">
+          <img src="assets/montagens/Montagens Industriais_03.jpg" alt="Equipe em montagem industrial">
+          <div class="gallery-content">
+            <h3><i class="fa-solid fa-industry"></i> Instalação e montagem técnica</h3>
+            <p>Projeto executado com organização operacional e atenção aos detalhes da instalação.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="diferenciais">
+    <div class="container">
+      <div class="section-header">
+        <span>Diferenciais</span>
+        <h2>Por que os clientes escolhem a JR Metal</h2>
+        <p>Mais do que executar serviços, a JR Metal busca entregar confiança, clareza comercial e resultado técnico em cada projeto.</p>
+      </div>
+
+      <div class="differentials-grid">
+        <div class="diff-card card reveal-up">
+          <div class="diff-icon"><i class="fa-solid fa-medal"></i></div>
+          <h3>Execução técnica</h3>
+          <p>Serviços conduzidos com atenção aos detalhes e foco no desempenho da solução.</p>
+        </div>
+
+        <div class="diff-card card reveal-up">
+          <div class="diff-icon"><i class="fa-solid fa-ruler-combined"></i></div>
+          <h3>Projetos sob medida</h3>
+          <p>Cada demanda é analisada para entregar a solução mais adequada ao cenário do cliente.</p>
+        </div>
+
+        <div class="diff-card card reveal-up">
+          <div class="diff-icon"><i class="fa-solid fa-stopwatch"></i></div>
+          <h3>Agilidade comercial</h3>
+          <p>Atendimento objetivo para acelerar orçamento, alinhamento e início do serviço.</p>
+        </div>
+
+        <div class="diff-card card reveal-up">
+          <div class="diff-icon"><i class="fa-solid fa-layer-group"></i></div>
+          <h3>Qualidade estrutural</h3>
+          <p>Compromisso com materiais, montagem e acabamento que agregam valor à operação.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="processo">
+    <div class="container">
+      <div class="section-header">
+        <span>Como funciona</span>
+        <h2>Um processo simples, direto e eficiente para tirar seu projeto do papel</h2>
+        <p>Da primeira conversa até a entrega, a JR Metal trabalha com organização, clareza e foco em resultado.</p>
+      </div>
+
+      <div class="process-grid">
+        <div class="process-step card reveal-up">
+          <div class="step-number">01</div>
+          <h3><i class="fa-solid fa-comments"></i> Contato inicial</h3>
+          <p>Você apresenta a necessidade e nossa equipe entende o escopo do serviço.</p>
+        </div>
+
+        <div class="process-step card reveal-up">
+          <div class="step-number">02</div>
+          <h3><i class="fa-solid fa-magnifying-glass-chart"></i> Análise técnica</h3>
+          <p>Avaliamos a melhor solução para garantir segurança, resistência e viabilidade.</p>
+        </div>
+
+        <div class="process-step card reveal-up">
+          <div class="step-number">03</div>
+          <h3><i class="fa-solid fa-file-invoice-dollar"></i> Proposta comercial</h3>
+          <p>Você recebe um orçamento alinhado ao projeto e à realidade da sua demanda.</p>
+        </div>
+
+        <div class="process-step card reveal-up">
+          <div class="step-number">04</div>
+          <h3><i class="fa-solid fa-truck-fast"></i> Execução e entrega</h3>
+          <p>O serviço é desenvolvido com foco em qualidade, prazo e confiança na entrega final.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="contato">
+    <div class="container">
+      <div class="section-header">
+        <span>Contato</span>
+        <h2>Vamos conversar sobre o seu projeto</h2>
+        <p>Preencha as informações abaixo e o botão abrirá o WhatsApp com a mensagem pronta, sem backend.</p>
+      </div>
+
+      <div class="contact-grid">
+        <div class="contact-card card reveal-left">
+          <h3><i class="fa-solid fa-headset"></i> Atendimento comercial</h3>
+          <p>Entre em contato com a JR Metal para solicitar orçamento, tirar dúvidas ou apresentar a necessidade do seu projeto industrial.</p>
+
+          <ul class="contact-info">
+            <li>
+              <i class="fa-solid fa-phone"></i>
+              <div>
+                <strong>Telefone</strong>
+                14 3326-6703
+              </div>
+            </li>
+            <li>
+              <i class="fa-brands fa-whatsapp"></i>
+              <div>
+                <strong>WhatsApp</strong>
+                14 99853-0838
+              </div>
+            </li>
+            <li>
+              <i class="fa-solid fa-envelope"></i>
+              <div>
+                <strong>E-mail</strong>
+                jrmetal@gmail.com
+              </div>
+            </li>
+            <li>
+              <i class="fa-solid fa-location-dot"></i>
+              <div>
+                <strong>Endereço</strong>
+                Estrada Mauro Moura, 07. <br>Ourinhos - SP, CEP - 19905-233
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <form class="contact-form card reveal-right" id="whatsappForm">
+          <h3><i class="fa-solid fa-file-signature"></i> Solicite um orçamento</h3>
+
+          <div class="form-grid">
+            <div class="form-row">
+              <div class="field">
+                <label for="nome">Nome</label>
+                <input type="text" id="nome" placeholder="Seu nome" required>
+              </div>
+
+              <div class="field">
+                <label for="telefone">Telefone</label>
+                <input type="text" id="telefone" placeholder="Seu telefone" required>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="field">
+                <label for="email">E-mail</label>
+                <input type="email" id="email" placeholder="Seu e-mail">
+              </div>
+
+              <div class="field">
+                <label for="servico">Serviço</label>
+                <select id="servico" required>
+                  <option value="">Selecione</option>
+                  <option>Reservatórios Metálicos</option>
+                  <option>Caldeiraria</option>
+                  <option>Manutenção e Montagens Industriais</option>
+                  <option>Orçamento</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="mensagem">Mensagem</label>
+              <textarea id="mensagem" placeholder="Descreva a sua necessidade"></textarea>
+            </div>
+
+            <div class="form-feedback" id="formFeedback">
+              Solicitação enviada com sucesso!
+            </div>
+
+            <button type="submit" class="btn btn-primary">
+              
+              Enviar para o WhatsApp
+              <i class="fa-solid fa-paper-plane"></i>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-logo">
+        <img src="assets/logo_02.png" alt="JR Metal" class="brand-logo"> </a>
+      </div>
+      <p>© 2026 JR Metal Soluções Industriais. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <a class="whatsapp-float" href="https://wa.me/5514998530838?text=Olá,%20gostaria%20de%20um%20orçamento." target="_blank" aria-label="WhatsApp">
+    <i class="fa-brands fa-whatsapp"></i>
+  </a>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+
+  <script>
+    const menuToggle = document.getElementById("menuToggle");
+    const navMenu = document.getElementById("navMenu");
+    const themeToggle = document.getElementById("themeToggle");
+    const themeIcon = themeToggle.querySelector("i");
+    const body = document.body;
+    const whatsappForm = document.getElementById("whatsappForm");
+    const formFeedback = document.getElementById("formFeedback");
+    const navbar = document.getElementById("navbar");
+
+    menuToggle.addEventListener("click", () => {
+      menuToggle.classList.toggle("active");
+      navMenu.classList.toggle("active");
+    });
+
+    document.querySelectorAll(".nav-menu a").forEach(link => {
+      link.addEventListener("click", () => {
+        menuToggle.classList.remove("active");
+        navMenu.classList.remove("active");
+      });
+    });
+
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 20) {
+        navbar.classList.add("scrolled");
+      } else {
+        navbar.classList.remove("scrolled");
+      }
+    });
+
+    const savedTheme = localStorage.getItem("jrmetal-theme");
+    if(savedTheme === "light"){
+      body.classList.add("light-mode");
+      themeIcon.className = "fa-solid fa-sun";
+    } else {
+      themeIcon.className = "fa-solid fa-moon";
+    }
+
+    themeToggle.addEventListener("click", () => {
+      body.classList.toggle("light-mode");
+      const isLight = body.classList.contains("light-mode");
+      themeIcon.className = isLight ? "fa-solid fa-sun" : "fa-solid fa-moon";
+      localStorage.setItem("jrmetal-theme", isLight ? "light" : "dark");
+    });
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    gsap.from(".chip", {
+      y: 20,
+      opacity: 0,
+      duration: 0.8,
+      ease: "power3.out"
+    });
+
+    gsap.from(".hero h1", {
+      y: 40,
+      opacity: 0,
+      duration: 1,
+      delay: 0.15,
+      ease: "power3.out"
+    });
+
+    gsap.from(".hero p", {
+      y: 30,
+      opacity: 0,
+      duration: 0.9,
+      delay: 0.28,
+      ease: "power3.out"
+    });
+
+    gsap.from(".hero-actions", {
+      y: 25,
+      opacity: 0,
+      duration: 0.9,
+      delay: 0.4,
+      ease: "power3.out"
+    });
+
+    gsap.from(".hero-card", {
+      x: 50,
+      opacity: 0,
+      duration: 1.1,
+      delay: 0.25,
+      ease: "power3.out"
+    });
+
+    gsap.from(".hero-floating", {
+      y: 24,
+      opacity: 0,
+      duration: 0.9,
+      delay: 0.65,
+      ease: "back.out(1.4)"
+    });
+
+    gsap.utils.toArray(".reveal-up").forEach((el) => {
+      gsap.from(el, {
+        scrollTrigger: {
+          trigger: el,
+          start: "top 86%",
+          toggleActions: "play none none none"
+        },
+        y: 42,
+        opacity: 0,
+        duration: 0.85,
+        ease: "power3.out"
+      });
+    });
+
+    gsap.utils.toArray(".reveal-left").forEach((el) => {
+      gsap.from(el, {
+        scrollTrigger: {
+          trigger: el,
+          start: "top 86%",
+          toggleActions: "play none none none"
+        },
+        x: -55,
+        opacity: 0,
+        duration: 0.95,
+        ease: "power3.out"
+      });
+    });
+
+    gsap.utils.toArray(".reveal-right").forEach((el) => {
+      gsap.from(el, {
+        scrollTrigger: {
+          trigger: el,
+          start: "top 86%",
+          toggleActions: "play none none none"
+        },
+        x: 55,
+        opacity: 0,
+        duration: 0.95,
+        ease: "power3.out"
+      });
+    });
+
+    document.querySelectorAll(".service-card, .diff-card, .process-step, .gallery-card, .stat-card").forEach(card => {
+      card.addEventListener("mouseenter", () => {
+        gsap.to(card, {
+          y: -8,
+          duration: 0.25,
+          ease: "power2.out"
+        });
+      });
+
+      card.addEventListener("mouseleave", () => {
+        gsap.to(card, {
+          y: 0,
+          duration: 0.25,
+          ease: "power2.out"
+        });
+      });
+    });
+
+    const statNumbers = document.querySelectorAll(".stat-number");
+
+    statNumbers.forEach((stat) => {
+      const target = +stat.getAttribute("data-target");
+
+      gsap.to(stat, {
+        innerText: target,
+        duration: 2,
+        snap: { innerText: 1 },
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: stat,
+          start: "top 85%",
+          toggleActions: "play none none none"
+        },
+        onUpdate: function () {
+          const value = Math.ceil(stat.innerText);
+
+          if (target === 98) {
+            stat.innerText = value + "%";
+          } else {
+            stat.innerText = value + "+";
+          }
+        }
+      });
+    });
+
+    const filterButtons = document.querySelectorAll(".filter-btn");
+    const galleryCards = document.querySelectorAll("#galleryGrid .gallery-card");
+
+    function filterGallery(filter) {
+      galleryCards.forEach(card => {
+        const category = card.getAttribute("data-category");
+
+        if (category === filter) {
+          card.classList.remove("hide");
+          gsap.fromTo(card,
+            { opacity: 0, y: 20 },
+            { opacity: 1, y: 0, duration: 0.45, ease: "power2.out" }
+          );
+        } else {
+          card.classList.add("hide");
+        }
+      });
+    }
+
+    filterButtons.forEach(button => {
+      button.addEventListener("click", () => {
+        const filter = button.getAttribute("data-filter");
+        filterButtons.forEach(btn => btn.classList.remove("active"));
+        button.classList.add("active");
+        filterGallery(filter);
+      });
+    });
+
+    filterGallery("reservatorios");
+
+    whatsappForm.addEventListener("submit", function(e){
+      e.preventDefault();
+
+      const nome = document.getElementById("nome").value.trim();
+      const telefone = document.getElementById("telefone").value.trim();
+      const servico = document.getElementById("servico").value.trim();
+
+      if (!nome || !telefone || !servico) return;
+
+      const email = document.getElementById("email").value.trim();
+      const mensagem = document.getElementById("mensagem").value.trim();
+
+      const numeroWhatsApp = "5514998530838";
+
+      const texto =
+`Olá, gostaria de solicitar um orçamento com a JR Metal.
+
+*Nome:* ${nome}
+*Telefone:* ${telefone}
+*E-mail:* ${email || "Não informado"}
+*Serviço de interesse:* ${servico}
+*Mensagem:* ${mensagem || "Não informada"}`;
+
+      const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(texto)}`;
+
+      formFeedback.classList.add("show");
+      whatsappForm.reset();
+
+      setTimeout(() => {
+        window.open(url, "_blank");
+      }, 250);
+
+      setTimeout(() => {
+        formFeedback.classList.remove("show");
+      }, 3500);
+    });
+  </script>
+</body>
+</html>

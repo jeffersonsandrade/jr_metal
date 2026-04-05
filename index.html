@@ -1310,12 +1310,13 @@
     }
   </style>
 </head>
-<body>
+
+  <body>
 
   <header class="navbar" id="navbar">
     <div class="container navbar-inner">
       <a href="#inicio" class="logo">
-       <img src="assets/logo_02.png" alt="JR Metal" class="brand-logo"> </a>
+       <img src="../jr_metal/assets/logo_01.png" alt="JR Metal" class="brand-logo"> </a>
       
 
       <nav class="nav-menu" id="navMenu">
@@ -1805,7 +1806,7 @@
   <footer class="footer">
     <div class="container footer-inner">
       <div class="footer-logo">
-        <img src="assets/logo_02.png" alt="JR Metal" class="brand-logo"> </a>
+        <img src="../jr_metal/assets/logo_01.png" alt="JR Metal" class="brand-logo"> </a>
       </div>
       <p>© 2026 JR Metal Soluções Industriais. Todos os direitos reservados.</p>
     </div>
@@ -1832,14 +1833,16 @@
     const contatoSection = document.querySelector("#contato");
 
     menuToggle.addEventListener("click", () => {
-      menuToggle.classList.toggle("active");
+      const isOpen = menuToggle.classList.toggle("active");
       navMenu.classList.toggle("active");
+      body.classList.toggle("menu-open", isOpen);
     });
 
     document.querySelectorAll(".nav-menu a").forEach(link => {
       link.addEventListener("click", () => {
         menuToggle.classList.remove("active");
         navMenu.classList.remove("active");
+        body.classList.remove("menu-open");
       });
     });
 

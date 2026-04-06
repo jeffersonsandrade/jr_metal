@@ -78,6 +78,7 @@
       overflow-x:hidden;
       width:100%;
       position:relative;
+      padding-top: 82px; /* altura da navbar */
     }
 
     img{
@@ -210,10 +211,13 @@
       box-shadow:var(--shadow);
     }
 
-    /* NAVBAR FIXA COM BLUR E SEM DARK/LIGHT */
+   /* NAVBAR FIXA COM BLUR E SEM DARK/LIGHT */
     .navbar{
-      position: sticky;
+      position: fixed;
       top: 0;
+      left: 0;
+      width: 100%;
+      height: 82px;
       z-index: 1000;
       backdrop-filter: blur(18px);
       -webkit-backdrop-filter: blur(18px);
@@ -243,6 +247,7 @@
 
     .navbar .navbar-inner{
       position: relative;
+      height: 100%;
       z-index: 1;
     }
 
@@ -404,6 +409,7 @@
       display:flex;
       align-items:center;
       position:relative;
+      padding-top: 120px;
       overflow:hidden;
       background:
         var(--hero-overlay),

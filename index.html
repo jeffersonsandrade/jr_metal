@@ -1071,6 +1071,30 @@
       min-height:150px;
     }
 
+
+    .field-error{
+      color:#fca5a5;
+      font-size:.86rem;
+      font-weight:600;
+      display:none;
+      margin-top:2px;
+    }
+
+    .field.has-error input,
+    .field.has-error textarea,
+    .field.has-error select{
+      border-color:rgba(248,113,113,0.65);
+      box-shadow:0 0 0 4px rgba(248,113,113,0.12);
+    }
+
+    .field.has-error .field-error{
+      display:block;
+    }
+
+    body.light-mode .field-error{
+      color:#b91c1c;
+    }
+
     .form-feedback{
       display:none;
       padding:14px 16px;
@@ -1743,26 +1767,29 @@
           </ul>
         </div>
 
-        <form class="contact-form card reveal-right" id="whatsappForm">
+        <form class="contact-form card reveal-right" id="whatsappForm" novalidate>
           <h3><i class="fa-solid fa-file-signature"></i> Solicite um orçamento</h3>
 
           <div class="form-grid">
             <div class="form-row">
               <div class="field">
                 <label for="nome">Nome</label>
-                <input type="text" id="nome" placeholder="Seu nome" required>
+                <input type="text" id="nome" name="nome" placeholder="Seu nome completo" required maxlength="80" autocomplete="name">
+                <span class="field-error">Informe nome e sobrenome.</span>
               </div>
 
               <div class="field">
                 <label for="telefone">Telefone</label>
-                <input type="text" id="telefone" placeholder="Seu telefone" required>
+                <input type="tel" id="telefone" name="telefone" placeholder="(00) 00000-0000" required inputmode="tel" autocomplete="tel" maxlength="15">
+                <span class="field-error">Informe um telefone/WhatsApp válido com DDD.</span>
               </div>
             </div>
 
             <div class="form-row">
               <div class="field">
                 <label for="email">E-mail</label>
-                <input type="email" id="email" placeholder="Seu e-mail">
+                <input type="email" id="email" name="email" placeholder="Seu e-mail" required autocomplete="email" maxlength="120">
+                <span class="field-error">Informe um e-mail válido.</span>
               </div>
 
               <div class="field">
@@ -1779,7 +1806,8 @@
 
             <div class="field">
               <label for="mensagem">Mensagem</label>
-              <textarea id="mensagem" placeholder="Descreva a sua necessidade"></textarea>
+              <textarea id="mensagem" name="mensagem" placeholder="Descreva a sua necessidade" required maxlength="600"></textarea>
+              <span class="field-error">Descreva sua necessidade com pelo menos 10 caracteres.</span>
             </div>
 
             <div class="form-feedback" id="formFeedback">
@@ -2025,33 +2053,126 @@
 
     filterGallery("reservatorios");
 
+    const fields = {
+      nome: document.getElementById("nome"),
+      telefone: document.getElementById("telefone"),
+      email: document.getElementById("email"),
+      servico: document.getElementById("servico"),
+      mensagem: document.getElementById("mensagem")
+    };
+
+    function setFieldError(field, shouldShow, message = "") {
+      const wrapper = field.closest(".field");
+      const error = wrapper ? wrapper.querySelector(".field-error") : null;
+      if (!wrapper || !error) return;
+      wrapper.classList.toggle("has-error", shouldShow);
+      if (message) error.textContent = message;
+    }
+
+    function onlyDigits(value) {
+      return value.replace(/\D/g, "");
+    }
+
+    function formatPhone(value) {
+      const digits = onlyDigits(value).slice(0, 11);
+      if (digits.length <= 10) {
+        return digits
+          .replace(/^(\d{2})(\d)/g, "($1) $2")
+          .replace(/(\d{4})(\d)/, "$1-$2");
+      }
+      return digits
+        .replace(/^(\d{2})(\d)/g, "($1) $2")
+        .replace(/(\d{5})(\d)/, "$1-$2");
+    }
+
+    fields.telefone.addEventListener("input", (e) => {
+      e.target.value = formatPhone(e.target.value);
+      if (e.target.closest(".field").classList.contains("has-error")) {
+        validateField("telefone");
+      }
+    });
+
+    Object.values(fields).forEach((field) => {
+      field.addEventListener("input", () => {
+        if (field.closest(".field").classList.contains("has-error")) {
+          validateField(field.id);
+        }
+      });
+      field.addEventListener("blur", () => validateField(field.id));
+    });
+
+    function validateField(name) {
+      const field = fields[name];
+      const value = field.value.trim();
+
+      switch (name) {
+        case "nome": {
+          const valid = value.length >= 3 && value.includes(" ");
+          setFieldError(field, !valid, "Informe nome e sobrenome.");
+          return valid;
+        }
+        case "telefone": {
+          const digits = onlyDigits(value);
+          const valid = digits.length >= 10 && digits.length <= 11;
+          setFieldError(field, !valid, "Informe um telefone/WhatsApp válido com DDD.");
+          return valid;
+        }
+        case "email": {
+          const valid = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(value);
+          setFieldError(field, !valid, "Informe um e-mail válido.");
+          return valid;
+        }
+        case "servico": {
+          const valid = value !== "";
+          setFieldError(field, !valid, "Selecione um serviço.");
+          return valid;
+        }
+        case "mensagem": {
+          const valid = value.length >= 5;
+          setFieldError(field, !valid, "Descreva sua necessidade com pelo menos 10 caracteres.");
+          return valid;
+        }
+        default:
+          return true;
+      }
+    }
+
+    function validateForm() {
+      return ["nome", "telefone", "email", "servico", "mensagem"].every(validateField);
+    }
+
     whatsappForm.addEventListener("submit", function(e){
       e.preventDefault();
 
-      const nome = document.getElementById("nome").value.trim();
-      const telefone = document.getElementById("telefone").value.trim();
-      const servico = document.getElementById("servico").value.trim();
+      if (!validateForm()) {
+        formFeedback.classList.remove("show");
+        const firstError = whatsappForm.querySelector(".field.has-error input, .field.has-error select, .field.has-error textarea");
+        if (firstError) firstError.focus();
+        return;
+      }
 
-      if (!nome || !telefone || !servico) return;
+      const nome = fields.nome.value.trim();
+      const telefone = fields.telefone.value.trim();
+      const email = fields.email.value.trim();
+      const servico = fields.servico.value.trim();
+      const mensagem = fields.mensagem.value.trim();
 
-      const email = document.getElementById("email").value.trim();
-      const mensagem = document.getElementById("mensagem").value.trim();
-
-      const numeroWhatsApp = "5514998530838";
+      const numeroWhatsApp = "5514999999999";
 
       const texto =
 `Olá, gostaria de solicitar um orçamento com a JR Metal.
 
 *Nome:* ${nome}
 *Telefone:* ${telefone}
-*E-mail:* ${email || "Não informado"}
+*E-mail:* ${email}
 *Serviço de interesse:* ${servico}
-*Mensagem:* ${mensagem || "Não informada"}`;
+*Mensagem:* ${mensagem}`;
 
       const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(texto)}`;
 
       formFeedback.classList.add("show");
       whatsappForm.reset();
+      Object.values(fields).forEach((field) => setFieldError(field, false));
 
       setTimeout(() => {
         window.open(url, "_blank");

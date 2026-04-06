@@ -401,14 +401,15 @@
 
     .hero{
       min-height:calc(100vh - 82px);
-      display:contents;
+      display:flex;
       align-items:center;
       position:relative;
       overflow:hidden;
       background:
         var(--hero-overlay),
-        url('https://images.unsplash.com/photo-1513828646384-e4d8ec30d2bb?q=80&w=1170&auto=format&fit=crop') center/cover no-repeat;
-    }
+        url('https://images.unsplash.com/photo-1513828646384-e4d8ec30d2bb?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') center/cover no-repeat;
+      margin: 70px auto;
+      }
 
     .hero::before{
       content:"";
@@ -482,7 +483,7 @@
     }
 
     .hero-actions{
-      display:contents;
+      display:flex;
       flex-wrap:wrap;
       gap:14px;
       margin-bottom:30px;
@@ -1227,8 +1228,7 @@
 
       .hero{
         min-height:auto;
-        padding: 80px;
-        
+        padding:70px 0;
       }
 
       .hero-benefits,
@@ -1241,11 +1241,11 @@
         grid-template-columns:1fr;
       }
 
-      -card img{
+      .hero-card img{
         height:380px;
       }
 
-      -floating{
+      .hero-floating{
         position:static;
         margin-top:16px;
         max-width:100%;
@@ -1380,7 +1380,7 @@
 
       <div class="hero-panel reveal-right">
         <div class="hero-card">
-          <img src="https://images.unsplash.com/photo-1627052428109-576e839d100a?q=80&w=735&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Estrutura metálica industrial">
+          <img src="assets/tanques_industriais.jpg" alt="Estrutura metálica industrial">
         </div>
 
         
